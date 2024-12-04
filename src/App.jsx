@@ -25,6 +25,14 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (
+      !formData.title ||
+      !formData.image ||
+      !formData.content ||
+      !formData.published
+    )
+      return alert("Riempi tutti i campi");
+
     setPosts((posts) => [...posts, { id: Date.now(), ...formData }]);
     setFormData(defaultFormData);
   };
