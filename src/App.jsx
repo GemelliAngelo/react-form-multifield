@@ -25,8 +25,8 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    setPosts([...formData]);
-    setsetFormData(defaultFormData);
+    setPosts((posts) => [...posts, { id: Date.now(), ...formData }]);
+    setFormData(defaultFormData);
   };
 
   const handleDelete = (name) => {
@@ -90,17 +90,17 @@ function App() {
           </form>
 
           {posts.map((post) => (
-            <div className="card" key={post.name}>
+            <div className="card" key={post.id}>
               <div className="card-header">
-                <img className="card-image" src="placeholder.png" />
+                <img className="card-image" src={post.image} />
                 <i
-                  onClick={() => handleDelete(post.name)}
+                  onClick={() => handleDelete(post.id)}
                   className="fa-solid fa-trash"
                 ></i>
               </div>
               <div className="card-body">
-                <h3 className="card-title">{post.name}</h3>
-                <p className="card-description">{formData.content}</p>
+                <h3 className="card-title">{post.title}</h3>
+                <p className="card-description">{post.content}</p>
               </div>
             </div>
           ))}
