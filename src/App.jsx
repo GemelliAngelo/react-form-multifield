@@ -29,8 +29,8 @@ function App() {
     setFormData(defaultFormData);
   };
 
-  const handleDelete = (name) => {
-    setPosts([...posts.filter((post) => post.name !== name)]);
+  const handleDelete = (id) => {
+    setPosts([...posts.filter((post) => post.id !== id)]);
   };
 
   return (
