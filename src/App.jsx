@@ -1,35 +1,32 @@
 import { useState } from "react";
 
-function App() {
-  const [Titles, setTitles] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [formData, setFormData] = useState({
-    image: "",
-    content: "",
-    category: false,
-  });
+const defaultFormData = {
+  title: "",
+  image: "",
+  content: "",
+  category: "",
+  published: false,
+};
 
-  const handleInputChange = (e) => {
-    setTitles(e.target.value);
+function App() {
+  const [posts, setPosts] = useState([]);
+  const [formData, setFormData] = useState(defaultFormData);
+
+  const handleFormData = (e) => {
+    const newValue =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: newValue,
+    }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (!Titles) {
-      alert("Inserisci un titolo valido");
-      return;
-    }
-
-    setPosts([...posts, { name: Titles }]);
-    setTitles("");
-  };
-
-  const handleFormData = (e) => {
-    setFormData((formData) => ({
-      ...formData,
-      [e.target.name]: e.target.value,
-    }));
+    setPosts([...formData]);
+    setsetFormData(defaultFormData);
   };
 
   const handleDelete = (name) => {
@@ -44,38 +41,58 @@ function App() {
       <main>
         <div className="container">
           <form onSubmit={handleFormSubmit}>
+            <label htmlFor="title">Titolo</label>
             <input
-              onChange={handleInputChange}
+              name="title"
+              onChange={handleFormData}
               type="text"
               className="form-input"
-              value={Titles}
+              id="title"
+              value={formData.title}
             />
+            <label htmlFor="image">Image</label>
             <input
               name="image"
               onChange={handleFormData}
               type="text"
               className="form-input"
+              id="image"
               value={formData.image}
             />
+            <label htmlFor="content">Description</label>
             <textarea
               name="content"
               onChange={handleFormData}
               className="form-input text-area"
+              id="content"
               value={formData.content}
             />
-            <select
-              name="category"
-              onChange={handleFormData}
-              className="form-input select"
-              value={formData.category}
-            />
+            <div>
+              <label htmlFor="category">Category</label>
+              <select
+                name="category"
+                onChange={handleFormData}
+                className="form-input select"
+                id="category"
+                value={formData.category}
+              />
+              <label htmlFor="published">Published</label>
+              <input
+                name="published"
+                checked={formData.published}
+                onChange={handleFormData}
+                type="checkbox"
+                className="form-input checkbox"
+                id="published"
+              />
+            </div>
             <button className="form-button">AGGIUNGI</button>
           </form>
 
           {posts.map((post) => (
             <div className="card" key={post.name}>
               <div className="card-header">
-                <img className="card-image" src={formData.image} />
+                <img className="card-image" src="placeholder.png" />
                 <i
                   onClick={() => handleDelete(post.name)}
                   className="fa-solid fa-trash"
@@ -83,7 +100,7 @@ function App() {
               </div>
               <div className="card-body">
                 <h3 className="card-title">{post.name}</h3>
-                <p className="card-description"></p>
+                <p className="card-description">{formData.content}</p>
               </div>
             </div>
           ))}
