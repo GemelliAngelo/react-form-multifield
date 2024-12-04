@@ -4,7 +4,6 @@ function App() {
   const [Titles, setTitles] = useState("");
   const [posts, setPosts] = useState([]);
   const [formData, setFormData] = useState({
-    title: "",
     image: "",
     content: "",
     category: false,
@@ -51,6 +50,25 @@ function App() {
                 type="text"
                 className="form-input"
                 value={Titles}
+              />
+              <input
+                name="image"
+                onChange={handleFormData}
+                type="text"
+                className="form-input"
+                value={formData.image}
+              />
+              <textarea
+                name="content"
+                onChange={handleFormData}
+                className="form-text-area"
+                value={formData.content}
+              />
+              <select
+                name="category"
+                onChange={handleFormData}
+                className="form-select"
+                value={formData.category}
               />
               <button className="form-button">AGGIUNGI</button>
             </form>
