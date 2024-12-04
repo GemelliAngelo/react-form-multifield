@@ -6,18 +6,12 @@
 
 .container {
   max-width: 1000px;
-  padding: 0 10px;
+  padding: 10px 10px;
   margin: auto;
 }
 
 header {
   background-color: aquamarine;
-  padding: 30px;
-}
-
-.d-flex {
-  display: flex;
-  flex-direction: column;
   padding: 30px;
 }
 
@@ -28,40 +22,37 @@ form {
 }
 
 .form-input {
-  padding: 10px 20px;
+  padding: 0 5px;
   font-size: 1.2rem;
 }
 
 .form-button {
   padding: 10px 20px;
-  margin-left: 20px;
   background-color: #006b29;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
 
-.titles-list-item {
+.card {
   font-size: 2rem;
   margin: 10px 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.fa-solid {
+.card-header {
+  position: relative;
+}
+
+.fa-trash {
+  position: absolute;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
-  font-size: 1rem;
-}
-
-.fa-solid.fa-trash {
-  background-color: red;
-  margin-left: 10px;
-}
-
-.fa-solid.fa-pen {
-  background-color: rgb(38, 118, 238);
+  font-size: 0.8rem;
 }

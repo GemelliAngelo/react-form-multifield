@@ -43,53 +43,50 @@ function App() {
       </header>
       <main>
         <div className="container">
-          <div className="d-flex">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                onChange={handleInputChange}
-                type="text"
-                className="form-input"
-                value={Titles}
-              />
-              <input
-                name="image"
-                onChange={handleFormData}
-                type="text"
-                className="form-input"
-                value={formData.image}
-              />
-              <textarea
-                name="content"
-                onChange={handleFormData}
-                className="form-input text-area"
-                value={formData.content}
-              />
-              <select
-                name="category"
-                onChange={handleFormData}
-                className="form-input select"
-                value={formData.category}
-              />
-              <button className="form-button">AGGIUNGI</button>
-            </form>
+          <form onSubmit={handleFormSubmit}>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              className="form-input"
+              value={Titles}
+            />
+            <input
+              name="image"
+              onChange={handleFormData}
+              type="text"
+              className="form-input"
+              value={formData.image}
+            />
+            <textarea
+              name="content"
+              onChange={handleFormData}
+              className="form-input text-area"
+              value={formData.content}
+            />
+            <select
+              name="category"
+              onChange={handleFormData}
+              className="form-input select"
+              value={formData.category}
+            />
+            <button className="form-button">AGGIUNGI</button>
+          </form>
 
-            <div className="d-flex">
-              <ul className="titles-list">
-                {posts.map((post) => (
-                  <li className="titles-list-item" key={post.name}>
-                    {post.name}
-                    <div>
-                      <i className="fa-solid fa-pen"></i>
-                      <i
-                        onClick={() => handleDelete(post.name)}
-                        className="fa-solid fa-trash"
-                      ></i>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+          {posts.map((post) => (
+            <div className="card" key={post.name}>
+              <div className="card-header">
+                <img className="card-image" src={formData.image} />
+                <i
+                  onClick={() => handleDelete(post.name)}
+                  className="fa-solid fa-trash"
+                ></i>
+              </div>
+              <div className="card-body">
+                <h3 className="card-title">{post.name}</h3>
+                <p className="card-description"></p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </main>
     </>
