@@ -61,13 +61,13 @@ function App() {
               <textarea
                 name="content"
                 onChange={handleFormData}
-                className="form-text-area"
+                className="form-input text-area"
                 value={formData.content}
               />
               <select
                 name="category"
                 onChange={handleFormData}
-                className="form-select"
+                className="form-input select"
                 value={formData.category}
               />
               <button className="form-button">AGGIUNGI</button>
