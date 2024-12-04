@@ -3,6 +3,12 @@ import { useState } from "react";
 function App() {
   const [Titles, setTitles] = useState("");
   const [posts, setPosts] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    image: "",
+    content: "",
+    category: false,
+  });
 
   const handleInputChange = (e) => {
     setTitles(e.target.value);
@@ -18,6 +24,13 @@ function App() {
 
     setPosts([...posts, { name: Titles }]);
     setTitles("");
+  };
+
+  const handleFormData = (e) => {
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleDelete = (name) => {
@@ -37,7 +50,6 @@ function App() {
                 onChange={handleInputChange}
                 type="text"
                 className="form-input"
-                name="blog-title"
                 value={Titles}
               />
               <button className="form-button">AGGIUNGI</button>
