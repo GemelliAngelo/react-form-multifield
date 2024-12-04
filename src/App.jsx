@@ -4,7 +4,7 @@ const defaultFormData = {
   title: "",
   image: "",
   content: "",
-  category: "",
+  categories: ["HTML", "CSS", "JS", "PHP", "EXPRESS", "React.js"],
   published: false,
 };
 
@@ -82,8 +82,11 @@ function App() {
                 onChange={handleFormData}
                 className="form-input select"
                 id="category"
-                value={formData.category}
-              />
+              >
+                {formData.categories.map((category) => (
+                  <option value={category}>{category}</option>
+                ))}
+              </select>
               <label htmlFor="published">Published</label>
               <input
                 name="published"
