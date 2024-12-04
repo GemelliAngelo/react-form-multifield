@@ -4,7 +4,7 @@ const defaultFormData = {
   title: "",
   image: "",
   content: "",
-  categories: ["HTML", "CSS", "JS", "PHP", "EXPRESS", "React.js"],
+  categories: ["HTML", "CSS", "JS", "Php", "Express", "NODE", "React.js"],
   published: false,
 };
 
@@ -76,17 +76,6 @@ function App() {
               value={formData.content}
             />
             <div>
-              <label htmlFor="category">Category</label>
-              <select
-                name="category"
-                onChange={handleFormData}
-                className="form-input select"
-                id="category"
-              >
-                {formData.categories.map((category) => (
-                  <option value={category}>{category}</option>
-                ))}
-              </select>
               <label htmlFor="published">Published</label>
               <input
                 name="published"
@@ -96,6 +85,17 @@ function App() {
                 className="form-input checkbox"
                 id="published"
               />
+              <select
+                name="category"
+                onChange={handleFormData}
+                className="form-input select"
+              >
+                {formData.categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
             <button className="form-button">AGGIUNGI</button>
           </form>

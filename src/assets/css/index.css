@@ -15,6 +15,10 @@ img {
   display: block;
 }
 
+option {
+  font-size: 0.8rem;
+}
+
 header {
   background-color: aquamarine;
   padding: 30px;
@@ -25,6 +29,11 @@ form {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .form-input {
@@ -44,7 +53,8 @@ form {
 
 .select,
 .checkbox {
-  margin: 0 10px;
+  margin: 0 20px;
+  font-size: 0.8rem;
 }
 
 .card {
