@@ -2,7 +2,8 @@ import { useState } from "react";
 
 const defaultFormData = {
   title: "",
-  image: "",
+  image:
+    "https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg",
   content: "",
   categories: ["HTML", "CSS", "JS", "Php", "Express", "NODE", "React.js"],
   published: false,
@@ -99,22 +100,23 @@ function App() {
             </div>
             <button className="form-button">AGGIUNGI</button>
           </form>
-
-          {posts.map((post) => (
-            <div className="card" key={post.id}>
-              <div className="card-header">
-                <img className="card-image" src={post.image} />
-                <i
-                  onClick={() => handleDelete(post.id)}
-                  className="fa-solid fa-trash"
-                ></i>
+          <div className="card-wrapper">
+            {posts.map((post) => (
+              <div className="card" key={post.id}>
+                <div className="card-header">
+                  <img className="card-image" src={post.image} />
+                  <i
+                    className="fa-solid fa-xmark"
+                    onClick={() => handleDelete(post.id)}
+                  ></i>
+                </div>
+                <div className="card-body">
+                  <h3 className="card-title">{post.title}</h3>
+                  <p className="card-description">{post.content}</p>
+                </div>
               </div>
-              <div className="card-body">
-                <h3 className="card-title">{post.title}</h3>
-                <p className="card-description">{post.content}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </main>
     </>

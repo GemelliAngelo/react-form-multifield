@@ -57,14 +57,21 @@ label {
   font-size: 0.8rem;
 }
 
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .card {
+  width: 48%;
   font-size: 2rem;
   border: 1px solid grey;
   border-radius: 10px;
   margin: 10px 0;
   display: flex;
   flex-direction: column;
-  max-width: fit-content;
 }
 
 .card-header {
@@ -76,12 +83,17 @@ label {
   padding: 10px;
 }
 
-.fa-trash {
+.fa-xmark {
   position: absolute;
   top: 5px;
   right: 5px;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
+  display: none;
+}
+
+.card:hover .fa-xmark {
+  display: inline-block;
 }
